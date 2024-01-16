@@ -1,5 +1,3 @@
-// module.rs
-
 pub struct ColorGround {
     pub black: String,
     pub red: String,
@@ -38,8 +36,12 @@ pub struct Chalk {
     pub background: ChalkGround,
 }
 
-pub fn chalk() -> (Colors, Chalk) {
-    #[allow(dead_code)]
+pub struct Main {
+    pub chalk: Chalk,
+    pub colors: Colors,
+}
+
+pub fn main() -> Main {
     let colors: Colors = Colors {
         none: String::from("\x1b[0m"),
         forground: ColorGround {
@@ -94,5 +96,5 @@ pub fn chalk() -> (Colors, Chalk) {
         },
     };
 
-    (colors, chalk)
+    return Main { chalk, colors };
 }
