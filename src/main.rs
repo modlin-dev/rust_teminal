@@ -1,10 +1,16 @@
+use crate::chalk::BackgroundType;
+use crate::chalk::ForegroundType;
+
 pub mod chalk;
 pub mod logger;
 
 fn main() {
-    let chalk = chalk::main().chalk;
-    let logging = logger::new();
-    let value: &str = &(chalk.foreground.red)("Hello, world!");
-
-    (logging.log)(value);
+    logger::log(
+        format!(
+            "{} {}",
+            chalk::Foreground::rgb(242, 96, 242, "Hello, world"),
+            chalk::Background::rgb(242, 96, 242, "Hello, world")
+        )
+        .as_str(),
+    )
 }
